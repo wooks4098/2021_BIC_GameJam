@@ -32,5 +32,10 @@ public class SetResolution1 : MonoBehaviour
             Camera.main.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight); // 새로운 Rect 적용
         }
     }
+
+    public void Close()
+    {
+        SoundManager.instance.SoundEffect("Buy");
+    }
 }
 

@@ -7,7 +7,7 @@ public static class GlobalResource
 {
     
    public static double globalGold=100;
-   public static double globalPeople=10;
+   public static double globalPeople=0;
     
 }
 public enum GlobalTextAbout{

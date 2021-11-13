@@ -105,9 +105,9 @@ public class LockManager : MonoBehaviour
     }
     void ShowNews(int level, int Count)
     {
-        if(Count == 15 || Count == 30)
+        if(Count% 8 == 0)
         {
-            NewsEvent.ShowGoodNews(level, Count);
+            NewsEvent.StartNews(level, Count);
         }
     }
     // 어떤 맵 이벤트 단계를 해금할 지 결정 + 어떤 맵에 해당하는지 체크

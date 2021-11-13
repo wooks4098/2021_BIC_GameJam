@@ -50,13 +50,14 @@ public class NewsEvent : MonoBehaviour
 
     public void StartNews(int level, int Count)
     {
-        int i = Random.Range(0, 2);
+        int i = Random.Range(0, 3);
         switch(i)
         {
             case 0:
+            case 1:
                 ShowBadNews(level, Count) ;
                 break;
-            case 1:
+            case 2:
                 ShowGoodNews(level, Count);
                 break;
 
@@ -68,7 +69,7 @@ public class NewsEvent : MonoBehaviour
         SoundManager.instance.SoundEffect("BadNews");
         NewsBase.SetActive(true);
         news[0].Base.SetActive(true);
-        int num = level + (Count / 15 - 1);
+        int num = level + (Count / 8 - 1);
         news[0].Info.text = BadnewsInfo[num].info;
 
         int Type = Random.Range(0, 2);
@@ -99,7 +100,7 @@ public class NewsEvent : MonoBehaviour
         SoundManager.instance.SoundEffect("GoodNews");
         NewsBase.SetActive(true);
         news[1].Base.SetActive(true);
-        int num = level + (Count / 15 - 1);
+        int num = level + (Count / 8 - 1);
         news[1].Info.text = GoodnewsInfo[num].info;
 
         int Type = Random.Range(0, 2);
@@ -118,7 +119,7 @@ public class NewsEvent : MonoBehaviour
             case 1: // ¿Œ±∏+
                 news[1].EventIcon.sprite = People;
                 int people = (int)GlobalResource.globalPeople;
-                people = (int)(people * 0.08 + people * 0.17 * num);
+                people = (int)(people * 0.04 + people * 0.14 * num);
                 temp = (int)people;
                 GlobalResource.globalPeople += people;
                 news[1].updown.text = "+" + temp.ToString();
@@ -132,6 +133,7 @@ public class NewsEvent : MonoBehaviour
         NewsBase.SetActive(false);
         news[0].Base.SetActive(false);
         news[1].Base.SetActive(false);
+        SoundManager.instance.SoundEffect("Buy");
     }
 
 }
