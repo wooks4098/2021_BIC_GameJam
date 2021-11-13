@@ -16,10 +16,12 @@ public class UIParticle : MonoBehaviour
     {
         transform.position = trans.position;
         ani.SetTrigger("Show");
-        for(int i = 0; i< cameraShakes.Length; i++)
-        {
-            StartCoroutine(cameraShakes[i].Shake(0.2f, 0.2f));
-        }
+        //for(int i = 0; i< cameraShakes.Length; i++)
+        //{
+        //    StartCoroutine(cameraShakes[i].Shake(0.2f, 0.2f));
+        //}
        //image.enabled = true;
     }
+
+    
 }

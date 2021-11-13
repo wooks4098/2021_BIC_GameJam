@@ -22,7 +22,8 @@ public class LockManager : MonoBehaviour
 
     [SerializeField]
     private LevelObjectEvent LOE;
-
+    [SerializeField] CameraShake[] cameraShake;
+    [SerializeField] CameraManager cameraManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,43 +49,63 @@ public class LockManager : MonoBehaviour
     //각 이벤트 업글 시 호출
     public void OnUpdateEventSlotLevelUp(int upGradeID)
     {
+        int num = upGradeID;
+        switch (num)
+        {
+            case 0:
+            case 1:
+            case 2:
+                num = 0;
+                break;
+            case 3:
+            case 4:
+            case 5:
+                num = 1;
+                break;
+            case 6:
+            case 7:
+            case 8:
+                num = 2;
+                break;
+            case 9:
+            case 10:
+                num = 3;
+                break;
+        }
         
 
-                lockID[upGradeID]++;
-        MapCheck();
+        lockID[num]++;
+        MapCheck(num);
     }
     
     // 어떤 맵 이벤트 단계를 해금할 지 결정 + 어떤 맵에 해당하는지 체크
-    void MapCheck()
+    void MapCheck(int num)
     {
         int temp;
 
-        for(int i = 0; i< lockID.Length; i++)
+        if (lockID[num] == 0)
+            return;
+        if (lockID[num] % 10 != 0)
+            return;
+        temp = (int)(lockID[num] / 10 - 1);
+        switch (num)
         {
-            if (lockID[i] == 0)
-                continue;
-            if ( lockID[i] % 10 != 0)
-                continue;
-            temp = (int)(lockID[i] / 10-1) ;
-            switch (i)
-            {
-                case 0:
+            case 0:
 
-                    MapEvent(0, temp);
-                    break;
-                case 1:
+                MapEvent(0, temp);
+                break;
+            case 1:
 
-                    MapEvent(1, temp);
-                    break;
-                case 2:
+                MapEvent(1, temp);
+                break;
+            case 2:
 
-                    MapEvent(2, temp);
-                    break;
-                case 3:
+                MapEvent(2, temp);
+                break;
+            case 3:
 
-                    MapEvent(3, temp);
-                    break;
-            }
+                MapEvent(3, temp);
+                break;
         }
 
         //foreach(int i in lockID)
@@ -95,19 +116,19 @@ public class LockManager : MonoBehaviour
         //    switch (temp)
         //    {
         //        case 0:
-                     
+
         //            MapEvent(0, temp);
         //            break;
         //        case 1:
-                    
+
         //            MapEvent(1, temp);
         //            break;
         //        case 2:
-                    
+
         //            MapEvent(2, temp);
         //            break;
         //        case 3:
-                    
+
         //            MapEvent(3, temp);
         //            break;
         //    }
@@ -119,17 +140,25 @@ public class LockManager : MonoBehaviour
         switch (lockID)
         {
             case 0:
+                cameraManager.ChangeCamera(0);
                 LOE.HoseLevelEvent(level);
-
+                StartCoroutine(cameraShake[0].Shake(0.2f, 0.2f));
+                
                 break;
             case 1:
+                cameraManager.ChangeCamera(1);
                 LOE.MartLevelEvent(level);
+                StartCoroutine(cameraShake[1].Shake(0.3f, 0.2f));
                 break;
             case 2:
+                cameraManager.ChangeCamera(2);
                 LOE.StreetLevelEvent(level);
+                StartCoroutine(cameraShake[2].Shake(0.5f, 0.2f));
                 break;
             case 3:
+                cameraManager.ChangeCamera(3);
                 LOE.CityLevelEvent(level);
+                StartCoroutine(cameraShake[3].Shake(0.7f, 0.2f)); 
                 break;
         }
     }

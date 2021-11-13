@@ -28,6 +28,7 @@ public class Upgrade : MonoBehaviour
     private int EventNO;
 
     LockManager lockManager;
+    [SerializeField] UIParticle uIParticle;
     private void Awake()
     {
         lockManager = FindObjectOfType<LockManager>();
@@ -71,7 +72,8 @@ public class Upgrade : MonoBehaviour
             Debug.Log("UpgradeCount:" + GlobalUpgradeInfo.UpgradeCount);
             // buttonTexts[(int)ButtonTextAbout.POPULATION].text ="+"+ targetUpgradeInfo.peopleAdd.ToString();
 
-            lockManager.OnUpdateEventSlotLevelUp(LV);
+            lockManager.OnUpdateEventSlotLevelUp(EventNO);
+            uIParticle.ParticlsSHow(gameObject.transform);
         }
         else{
             Debug.Log("Not Enough Money");
