@@ -21,9 +21,4 @@ public class SceneLoadEvent : MonoBehaviour
         TutorialCanvas.gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

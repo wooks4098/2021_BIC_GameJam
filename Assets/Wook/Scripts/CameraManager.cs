@@ -28,7 +28,7 @@ public class CameraManager : MonoBehaviour
     {
         if (OldCamera != null)
             OldCamera.SetActive(false);
-
+        SoundManager.instance.SoundEffect("Change");
         switch((Cam)_cam)
         {
             case Cam.House:
