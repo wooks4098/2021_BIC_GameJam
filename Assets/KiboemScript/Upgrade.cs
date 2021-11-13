@@ -10,7 +10,7 @@ public class Upgrade : MonoBehaviour
 {
     UpgradeInfo thisUpgradeInfo = new UpgradeInfo();
     [SerializeField]
-    private string UpgradeName;
+    public string UpgradeName;
     [SerializeField]
     private List<Text> buttonTexts;
    
@@ -24,6 +24,14 @@ public class Upgrade : MonoBehaviour
     private float goldAddRate;
     [SerializeField]
     private float goldLevelConstant;
+    [SerializeField]
+    private int EventNO;
+
+    LockManager lockManager;
+    private void Awake()
+    {
+        lockManager = FindObjectOfType<LockManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,12 +41,16 @@ public class Upgrade : MonoBehaviour
        thisUpgradeInfo.requireGold = requireGold;
        //thisUpgradeInfo.peopleAddRate = peopleAddRate;
        thisUpgradeInfo.goldAddRate = goldAddRate;
-         GlobalUpgradeInfo.UpgradeList.Add(UpgradeName, thisUpgradeInfo);
+        thisUpgradeInfo.EventNO = this.EventNO;
+        GlobalUpgradeInfo.UpgradeList.Add(UpgradeName, thisUpgradeInfo);
         
 
-        buttonTexts[(int)ButtonTextAbout.LV].text = GlobalResourceManager.ToStringg(thisUpgradeInfo.LV);
+       buttonTexts[(int)ButtonTextAbout.LV].text = GlobalResourceManager.ToStringg(thisUpgradeInfo.LV);
         buttonTexts[(int)ButtonTextAbout.GOLD].text = GlobalResourceManager.ToStringg(thisUpgradeInfo.requireGold);
         buttonTexts[(int)ButtonTextAbout.POPULATION].text = "+" + GlobalResourceManager.ToStringg(thisUpgradeInfo.peopleAdd);
+
+        if (EventNO != 0)
+            this.gameObject.SetActive(false);
     }
     public void OnClickUpgradeButton(string UpgradeName){
         var targetUpgradeInfo= GlobalUpgradeInfo.UpgradeList[UpgradeName];
@@ -55,11 +67,16 @@ public class Upgrade : MonoBehaviour
 
              buttonTexts[(int)ButtonTextAbout.LV].text = GlobalResourceManager.ToStringg(targetUpgradeInfo.LV);
              buttonTexts[(int)ButtonTextAbout.GOLD].text = GlobalResourceManager.ToStringg(targetUpgradeInfo.requireGold);
+              GlobalUpgradeInfo.UpgradeCount++;
+            Debug.Log("UpgradeCount:" + GlobalUpgradeInfo.UpgradeCount);
             // buttonTexts[(int)ButtonTextAbout.POPULATION].text ="+"+ targetUpgradeInfo.peopleAdd.ToString();
+
+            lockManager.OnUpdateEventSlotLevelUp(LV);
         }
         else{
             Debug.Log("Not Enough Money");
-            targetUpgradeInfo.LV++;
+            //targetUpgradeInfo.LV++;
+
             }
 
 
