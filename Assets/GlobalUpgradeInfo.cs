@@ -4,7 +4,7 @@ using UnityEngine;
 public struct UpgradeInfo{
     public int LV;
    public int peopleAdd;
-    public int requireGold;
+    public float requireGold;
     public float peopleAddRate;
     public float goldAddRate;
 }

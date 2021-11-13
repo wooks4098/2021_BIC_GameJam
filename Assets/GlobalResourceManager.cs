@@ -22,45 +22,56 @@ public class GlobalResourceManager :MonoBehaviour {
         Timer -= Time.deltaTime;
         
         if (Timer<0){
-         Debug.Log("Counting");
-           globalText[(int)GlobalTextAbout.globalPeople].text = GlobalResource.globalPeople.ToString();
-           globalText[(int)GlobalTextAbout.globalGold].text = GlobalResource.globalGold.ToString();
+
+            globalText[(int)GlobalTextAbout.globalPeople].text = ToString(GlobalResource.globalPeople);
+           globalText[(int)GlobalTextAbout.globalGold].text = ToString(GlobalResource.globalGold);
         Timer = 0.3f;
        }
     }
 
-    
-    string NumberTranslate(float translateTargetNumber)
+
+    static string[] unitSymbol = new string[] { "", "만", "억", "조", "경", "해" };
+
+    // long 보다 double이 최대 값이 커서 double  사용
+    public static string ToString(double value)
     {
-        string returnNum="";
-        if (translateTargetNumber == 0)
-        {
-            return "0";
-        }
-        float tempNumber = translateTargetNumber;
-        int digit = 1;
-       
-        while (tempNumber/10 !=0)
-        {
-            tempNumber = tempNumber / 10;
-            digit++;
-        }
-       
-        if (digit > 3 && digit <= 6)
-        returnNum += translateTargetNumber/1000 + "."+ translateTargetNumber%1000+"K";
-        else if(digit>=7)
-        returnNum += translateTargetNumber / 1000000 + "." + translateTargetNumber%1000000 + "M";
+        if (value == 0) { return "0"; }
 
-        return returnNum;
+        int unitID = 0;
+
+        string number = string.Format("{0:# #### #### #### #### ####}", value).TrimStart();
+        string[] splits = number.Split(' ');
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = splits.Length; i > 0; i--)
+        {
+            int digits = 0;
+            if (int.TryParse(splits[i - 1], out digits))
+            {
+                // 앞자리가 0이 아닐때
+                if (digits != 0)
+                {
+                    sb.Insert(0, $"{ digits}{ unitSymbol[unitID] }");
+                }
+            }
+            else
+            {
+                // 마이너스나 숫자외 문자
+                sb.Insert(0, $"{ splits[i - 1] }");
+            }
+            unitID++;
+        }
+        return sb.ToString();
     }
-    
-    
 
-    
+
+
+
 
     private void Start()
     {
-        Debug.Log(NumberTranslate(123456));
+        
     }
 
 
