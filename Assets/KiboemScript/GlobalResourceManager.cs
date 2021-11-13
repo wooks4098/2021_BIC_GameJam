@@ -6,7 +6,7 @@ using System.Text;
 public static class GlobalResource
 {
     
-   public static double globalGold=11900000000;
+   public static double globalGold=39900000000;
    public static double globalPeople=100000;
     
 }

@@ -39,7 +39,7 @@ public class ScrollBarController : MonoBehaviour
     IEnumerator ValueChnageDelay()
     {
         yield return new WaitForSeconds(0.3f);
-        scrollRect.verticalNormalizedPosition = 0;
-        slider.value = -100;
+        scrollRect.verticalNormalizedPosition = -100;
+        slider.value = scrollRect.verticalNormalizedPosition;
     }
 }

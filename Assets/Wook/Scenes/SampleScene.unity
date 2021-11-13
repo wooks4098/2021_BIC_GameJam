@@ -3503,6 +3503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3579c81c15205409108495b3ead4b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrollbar: {fileID: 5029310844322066270}
+  slider: {fileID: 5029310845015266299}
   EventButtons:
   - {fileID: 1172484373289219719}
   - {fileID: 827566064534208559}
@@ -11749,6 +11751,7 @@ GameObject:
   - component: {fileID: 5029310844322066257}
   - component: {fileID: 5029310844322066258}
   - component: {fileID: 5029310844322066259}
+  - component: {fileID: 5029310844322066270}
   m_Layer: 5
   m_Name: Scrollbar Vertical
   m_TagString: Untagged
@@ -11756,6 +11759,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5029310844322066270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5029310844322066269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035fbdeb211c64647be6436767c5a8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: 3.4
+  slider: {fileID: 5029310845015266299}
+  scrollRect: {fileID: 5029310845286909371}
 --- !u!1 &5029310844434197124
 GameObject:
   m_ObjectHideFlags: 0
@@ -12180,9 +12198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d135df632d0bc0540802bd96d8cb5b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: 1.3
-  slider: {fileID: 5029310845015266299}
-  scrollRect: {fileID: 5029310845286909371}
 --- !u!224 &5029310845015266277
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12274,8 +12289,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5029310845015266276}
-        m_TargetAssemblyTypeName: ScrollBar, Assembly-CSharp
+      - m_Target: {fileID: 5029310844322066270}
+        m_TargetAssemblyTypeName: ScrollBarController, Assembly-CSharp
         m_MethodName: ChangeScrollPos
         m_Mode: 1
         m_Arguments:
