@@ -21,8 +21,13 @@ public class GameEnd : MonoBehaviour
     IEnumerator StartParticle()
     {
         bool s = true;
+        SoundManager.instance.SoundEffect("Fire_Long");
+        SoundManager.instance.SoundEffect("Fire_Short");
         for (int i = 0; i < particleSystems.Length; i++)
         {
+            if(i  == particleSystems.Length/2)
+                SoundManager.instance.SoundEffect("Fire_Short");
+
             particleSystems[i].Play();
             particleSystems[i].Play();
             yield return new WaitForSeconds(0.25f);

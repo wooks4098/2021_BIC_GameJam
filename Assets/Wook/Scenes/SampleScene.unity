@@ -14848,8 +14848,8 @@ MonoBehaviour:
   LV: 0
   peopleAdd: 10000000
   requireGold: 1e+11
-  goldAddRate: 4
-  goldLevelConstant: 1000
+  goldAddRate: 2.5
+  goldLevelConstant: 700
   EventNO: 10
   uIParticle: {fileID: 1799587111}
 --- !u!224 &5832649787712633939
@@ -15802,8 +15802,8 @@ MonoBehaviour:
   LV: 0
   peopleAdd: 3000000
   requireGold: 4e+10
-  goldAddRate: 3.5
-  goldLevelConstant: 700
+  goldAddRate: 2
+  goldLevelConstant: 500
   EventNO: 9
   uIParticle: {fileID: 1799587111}
 --- !u!1 &7148050562907316104

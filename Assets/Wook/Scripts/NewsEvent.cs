@@ -88,7 +88,7 @@ public class NewsEvent : MonoBehaviour
             case 1: // ¿Œ±∏-
                 news[0].EventIcon.sprite = People;
                 int people = (int)GlobalResource.globalPeople;
-                people = (int)(people * 0.08 + people * 0.17 * num);
+                people = (int)(people * 0.04 + people * 0.01 * num);
                 GlobalResource.globalPeople -= people;
                 temp = (int)people;
                 news[0].updown.text = "-" + temp.ToString();
