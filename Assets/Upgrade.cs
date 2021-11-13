@@ -21,8 +21,6 @@ public class Upgrade : MonoBehaviour
      [SerializeField]
     private int requireGold;
      [SerializeField]
-    private float peopleAddRate;
-     [SerializeField]
     private float goldAddRate;
     [SerializeField]
     private float goldLevelConstant;
@@ -33,18 +31,23 @@ public class Upgrade : MonoBehaviour
         thisUpgradeInfo.LV = LV;
        thisUpgradeInfo.peopleAdd = peopleAdd;
        thisUpgradeInfo.requireGold = requireGold;
-       thisUpgradeInfo.peopleAddRate = peopleAddRate;
+       //thisUpgradeInfo.peopleAddRate = peopleAddRate;
        thisUpgradeInfo.goldAddRate = goldAddRate;
          GlobalUpgradeInfo.UpgradeList.Add(UpgradeName, thisUpgradeInfo);
+
+
+        buttonTexts[(int)ButtonTextAbout.LV].text = thisUpgradeInfo.LV.ToString();
+        buttonTexts[(int)ButtonTextAbout.GOLD].text = ((int)(thisUpgradeInfo.requireGold)).ToString();
+        buttonTexts[(int)ButtonTextAbout.POPULATION].text = "+" + thisUpgradeInfo.peopleAdd.ToString();
     }
     public void OnClickUpgradeButton(string UpgradeName){
         var targetUpgradeInfo= GlobalUpgradeInfo.UpgradeList[UpgradeName];
         if(GlobalResource.globalGold -targetUpgradeInfo.requireGold>=0){
-            GlobalResource.globalPeople += 10;
+            GlobalResource.globalPeople += targetUpgradeInfo.peopleAdd;
                 //targetUpgradeInfo.peopleAdd;
             GlobalResource.globalGold -= targetUpgradeInfo.requireGold;
             targetUpgradeInfo.LV++;
-             targetUpgradeInfo.peopleAdd = (int)targetUpgradeInfo.peopleAddRate*targetUpgradeInfo.LV;
+             //targetUpgradeInfo.peopleAdd = (int)targetUpgradeInfo.peopleAddRate*targetUpgradeInfo.LV;
             targetUpgradeInfo.requireGold += Mathf.Pow(goldLevelConstant * targetUpgradeInfo.LV, targetUpgradeInfo.goldAddRate);
                 //(int)targetUpgradeInfo.goldAddRate*targetUpgradeInfo.LV;
             GlobalUpgradeInfo.UpgradeList[UpgradeName] =  targetUpgradeInfo;
@@ -52,7 +55,7 @@ public class Upgrade : MonoBehaviour
 
              buttonTexts[(int)ButtonTextAbout.LV].text = targetUpgradeInfo.LV.ToString();
              buttonTexts[(int)ButtonTextAbout.GOLD].text = ((int)(targetUpgradeInfo.requireGold)).ToString();
-             buttonTexts[(int)ButtonTextAbout.POPULATION].text = targetUpgradeInfo.peopleAdd.ToString();
+            // buttonTexts[(int)ButtonTextAbout.POPULATION].text ="+"+ targetUpgradeInfo.peopleAdd.ToString();
         }
         else{
             Debug.Log("Not Enough Money");
