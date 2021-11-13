@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    Vector3 originPos;
+    [SerializeField] Vector3 originPos;
 
-    void Start()
+    private void OnEnable()
     {
         originPos = transform.localPosition;
+
     }
+
 
 
     public IEnumerator Shake(float _amount, float _duration)

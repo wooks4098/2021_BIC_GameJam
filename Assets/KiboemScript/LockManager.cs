@@ -148,17 +148,17 @@ public class LockManager : MonoBehaviour
             case 1:
                 cameraManager.ChangeCamera(1);
                 LOE.MartLevelEvent(level);
-                StartCoroutine(cameraShake[1].Shake(0.2f, 0.2f));
+                StartCoroutine(cameraShake[1].Shake(0.3f, 0.2f));
                 break;
             case 2:
                 cameraManager.ChangeCamera(2);
                 LOE.StreetLevelEvent(level);
-                StartCoroutine(cameraShake[2].Shake(0.2f, 0.2f));
+                StartCoroutine(cameraShake[2].Shake(0.5f, 0.2f));
                 break;
             case 3:
                 cameraManager.ChangeCamera(3);
                 LOE.CityLevelEvent(level);
-                StartCoroutine(cameraShake[3].Shake(0.3f, 0.2f)); 
+                StartCoroutine(cameraShake[3].Shake(0.7f, 0.2f)); 
                 break;
         }
     }
