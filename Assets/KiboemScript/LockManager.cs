@@ -24,6 +24,8 @@ public class LockManager : MonoBehaviour
     private LevelObjectEvent LOE;
     [SerializeField] CameraShake[] cameraShake;
     [SerializeField] CameraManager cameraManager;
+    [SerializeField] NewsEvent NewsEvent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,9 +77,16 @@ public class LockManager : MonoBehaviour
         
 
         lockID[num]++;
+        ShowNews(num,lockID[num]);
         MapCheck(num);
     }
-    
+    void ShowNews(int level, int Count)
+    {
+        if(Count == 15 || Count == 30)
+        {
+            NewsEvent.ShowGoodNews(level, Count);
+        }
+    }
     // 어떤 맵 이벤트 단계를 해금할 지 결정 + 어떤 맵에 해당하는지 체크
     void MapCheck(int num)
     {
