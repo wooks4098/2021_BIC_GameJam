@@ -31,15 +31,17 @@ public class ScrollBarController : MonoBehaviour
     }
     public void MakeScrollZero()
     {
-        scrollRect.verticalNormalizedPosition = 0;
-        slider.value = -100;
-        StartCoroutine(ValueChnageDelay());
+        scrollRect.verticalNormalizedPosition = -100;
+        slider.value = scrollRect.verticalNormalizedPosition;
+       // StartCoroutine(ValueChnageDelay());
         
     }
+    /*
     IEnumerator ValueChnageDelay()
     {
         yield return new WaitForSeconds(0.3f);
         scrollRect.verticalNormalizedPosition = -100;
         slider.value = scrollRect.verticalNormalizedPosition;
     }
+    */
 }
