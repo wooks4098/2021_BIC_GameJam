@@ -13,12 +13,16 @@ public class UnLockID{
 public class LockManager : MonoBehaviour
 {
     [SerializeField]
+    private ScrollBarController scrollbar;
+    [SerializeField]
+    private Slider slider;
+    [SerializeField]
     private List<GameObject> EventButtons;
     [SerializeField]
     private List<Button> ViewButtons;
 
     private int[] lockID = { 0, 0, 0, 0 };
-   // private bool[] buttEventLockID = {false, false, false, false, false, false, false, false, false, false, false };
+   private bool[] buttEventLockID = {false, false, false, false, false, false, false, false, false, false, false };
 
     [SerializeField]
     private LevelObjectEvent LOE;
@@ -204,6 +208,12 @@ public class LockManager : MonoBehaviour
             if (GlobalResource.globalGold > info.Value.requireGold)
             {
                 EventButtons[info.Value.EventNO].SetActive(true);
+                if (buttEventLockID[info.Value.EventNO] == false)
+                {
+                    buttEventLockID[info.Value.EventNO] = true;
+                    scrollbar.MakeScrollZero();
+
+                }
                 CheckUnLockView();
             }
             
