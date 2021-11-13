@@ -9,6 +9,7 @@ public class GameEnd : MonoBehaviour
     [SerializeField] Image FadeOutImage;
 
     [SerializeField] Text[] EndText;
+    [SerializeField] GameObject[] EndTexObj;
 
     [SerializeField] GameObject UI;
 
@@ -53,6 +54,10 @@ public class GameEnd : MonoBehaviour
 
         FadeOut_TimeCheck = 2f;
         int  Font = 0;
+        for(int i = 0; i< EndTexObj.Length; i++)
+        {
+            EndTexObj[i].SetActive(true);
+        }
         while(FadeOut_TimeCheck> 0)
         {
             FadeOut_TimeCheck -= Time.deltaTime;
