@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using System.Text;
 public static class GlobalResource
 {
-   public static double globalGold=100000000;
+    
+   public static double globalGold=1000;
    public static double globalPeople=0;
     
 }
