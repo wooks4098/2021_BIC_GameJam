@@ -24,12 +24,12 @@ public class CameraManager : MonoBehaviour
         OldCamera = HouseCamera;
     }
 
-    public void ChangeCamera(Cam _cam)
+    public void ChangeCamera(int _cam)
     {
         if (OldCamera != null)
             OldCamera.SetActive(false);
 
-        switch(_cam)
+        switch((Cam)_cam)
         {
             case Cam.House:
                 HouseCamera.SetActive(true);

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public struct UpgradeInfo{
     public int LV;
-   public int peopleAdd;
-    public float requireGold;
+   public double peopleAdd;
+    public double requireGold;
     public float peopleAddRate;
     public float goldAddRate;
 }

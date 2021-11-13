@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GlobalEarning : MonoBehaviour
 {
-    private float earnRate = 1f;
+    [SerializeField]
+    private float earnRate ;
+    
     private float CountClock;
 
     
@@ -20,7 +22,7 @@ public class GlobalEarning : MonoBehaviour
         CountClock -= Time.deltaTime;
         if (CountClock < 0)
         {
-            GlobalResource.globalGold += Mathf.Pow(GlobalResource.globalPeople, 1.3f);
+            GlobalResource.globalGold += System.Math.Pow(GlobalResource.globalPeople, (double)1.3f);
             CountClock = earnRate;
         }
     }

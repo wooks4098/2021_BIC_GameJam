@@ -17,9 +17,9 @@ public class Upgrade : MonoBehaviour
    [SerializeField]
     private int LV;
     [SerializeField]
-    private int peopleAdd;
+    private float peopleAdd;
      [SerializeField]
-    private int requireGold;
+    private float requireGold;
      [SerializeField]
     private float goldAddRate;
     [SerializeField]
@@ -34,11 +34,11 @@ public class Upgrade : MonoBehaviour
        //thisUpgradeInfo.peopleAddRate = peopleAddRate;
        thisUpgradeInfo.goldAddRate = goldAddRate;
          GlobalUpgradeInfo.UpgradeList.Add(UpgradeName, thisUpgradeInfo);
+        
 
-
-        buttonTexts[(int)ButtonTextAbout.LV].text = thisUpgradeInfo.LV.ToString();
-        buttonTexts[(int)ButtonTextAbout.GOLD].text = ((int)(thisUpgradeInfo.requireGold)).ToString();
-        buttonTexts[(int)ButtonTextAbout.POPULATION].text = "+" + thisUpgradeInfo.peopleAdd.ToString();
+        buttonTexts[(int)ButtonTextAbout.LV].text = GlobalResourceManager.ToStringg(thisUpgradeInfo.LV);
+        buttonTexts[(int)ButtonTextAbout.GOLD].text = GlobalResourceManager.ToStringg(thisUpgradeInfo.requireGold);
+        buttonTexts[(int)ButtonTextAbout.POPULATION].text = "+" + GlobalResourceManager.ToStringg(thisUpgradeInfo.peopleAdd);
     }
     public void OnClickUpgradeButton(string UpgradeName){
         var targetUpgradeInfo= GlobalUpgradeInfo.UpgradeList[UpgradeName];
@@ -53,8 +53,8 @@ public class Upgrade : MonoBehaviour
             GlobalUpgradeInfo.UpgradeList[UpgradeName] =  targetUpgradeInfo;
 
 
-             buttonTexts[(int)ButtonTextAbout.LV].text = targetUpgradeInfo.LV.ToString();
-             buttonTexts[(int)ButtonTextAbout.GOLD].text = ((int)(targetUpgradeInfo.requireGold)).ToString();
+             buttonTexts[(int)ButtonTextAbout.LV].text = GlobalResourceManager.ToStringg(targetUpgradeInfo.LV);
+             buttonTexts[(int)ButtonTextAbout.GOLD].text = GlobalResourceManager.ToStringg(targetUpgradeInfo.requireGold);
             // buttonTexts[(int)ButtonTextAbout.POPULATION].text ="+"+ targetUpgradeInfo.peopleAdd.ToString();
         }
         else{
