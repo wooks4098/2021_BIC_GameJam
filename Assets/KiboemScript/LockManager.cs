@@ -26,6 +26,9 @@ public class LockManager : MonoBehaviour
     [SerializeField] CameraManager cameraManager;
     [SerializeField] NewsEvent NewsEvent;
 
+    [SerializeField] Animator aniParticle;
+    [SerializeField] Transform transParticle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,13 +44,32 @@ public class LockManager : MonoBehaviour
     }
     void CheckUnLockView()
     {
-        if (GlobalUpgradeInfo.UpgradeList["U4"].LV >= 1)
+        if (GlobalUpgradeInfo.UpgradeList["U4"].LV >= 1 && ViewButtons[0].interactable != true)
+        {
+            SoundManager.instance.SoundEffect("Unlock");
             ViewButtons[0].interactable = true;
-         if (GlobalUpgradeInfo.UpgradeList["U7"].LV >= 1)
+            transParticle.position = ViewButtons[0].transform.position;
+            aniParticle.SetTrigger("Show");
+        }
+        if (GlobalUpgradeInfo.UpgradeList["U7"].LV >= 1 && ViewButtons[1].interactable != true)
+        {
             ViewButtons[1].interactable = true;
-         if (GlobalUpgradeInfo.UpgradeList["U10"].LV >= 1)
+            SoundManager.instance.SoundEffect("Unlock");
+            transParticle.position = ViewButtons[1].transform.position;
+            aniParticle.SetTrigger("Show");
+        }
+        if (GlobalUpgradeInfo.UpgradeList["U10"].LV >= 1 && ViewButtons[2].interactable != true)
+        {
             ViewButtons[2].interactable = true;
+            SoundManager.instance.SoundEffect("Unlock");
+            transParticle.position = ViewButtons[2].transform.position;
+            aniParticle.SetTrigger("Show");
+
+        }
+           
     }
+
+
     //각 이벤트 업글 시 호출
     public void OnUpdateEventSlotLevelUp(int upGradeID)
     {
@@ -77,6 +99,7 @@ public class LockManager : MonoBehaviour
         
 
         lockID[num]++;
+        SoundManager.instance.SoundEffect("Buy");
         ShowNews(num,lockID[num]);
         MapCheck(num);
     }
@@ -97,6 +120,8 @@ public class LockManager : MonoBehaviour
         if (lockID[num] % 10 != 0)
             return;
         temp = (int)(lockID[num] / 10 - 1);
+        SoundManager.instance.SoundEffect("progress");
+
         switch (num)
         {
             case 0:

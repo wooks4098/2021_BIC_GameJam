@@ -47,10 +47,7 @@ public class NewsEvent : MonoBehaviour
 
 
 
-    private void Update()
-    {
 
-    }
     public void StartNews(int level, int Count)
     {
         int i = Random.Range(0, 2);
@@ -68,6 +65,7 @@ public class NewsEvent : MonoBehaviour
 
     void ShowBadNews(int level, int Count)
     {
+        SoundManager.instance.SoundEffect("BadNews");
         NewsBase.SetActive(true);
         news[0].Base.SetActive(true);
         int num = level + (Count / 15 - 1);
@@ -98,6 +96,7 @@ public class NewsEvent : MonoBehaviour
     }
    public  void ShowGoodNews(int level, int Count)
     {
+        SoundManager.instance.SoundEffect("GoodNews");
         NewsBase.SetActive(true);
         news[1].Base.SetActive(true);
         int num = level + (Count / 15 - 1);
