@@ -71,23 +71,28 @@ public class NewsEvent : MonoBehaviour
         NewsBase.SetActive(true);
         news[0].Base.SetActive(true);
         int num = level + (Count / 15 - 1);
-        Debug.Log(num);
         news[0].Info.text = BadnewsInfo[num].info;
 
         int Type = Random.Range(0, 2);
+        int temp;
         switch (Type)
         {
             case 0: // µ∑-
-                news[0].EventIcon.sprite = People;
+                news[0].EventIcon.sprite = Gold;
                 double gold = GlobalResource.globalGold;
-                gold -= gold * 0.3 + gold * 0.1 * num;
-                GlobalResource.globalGold = gold;
+                gold =(gold * 0.3 + gold * 0.1 * num);
+                Debug.Log(gold);
+                GlobalResource.globalGold -= gold;
+                temp = (int)gold;
+                news[0].updown.text = "-" + temp.ToString();
                 break;
             case 1: // ¿Œ±∏-
-                news[0].EventIcon.sprite = Gold;
-                double people = GlobalResource.globalPeople;
-                people -= people * 0.08 + people * 0.17 * num;
-                GlobalResource.globalPeople = people;
+                news[0].EventIcon.sprite = People;
+                int people = (int)GlobalResource.globalPeople;
+                people = (int)(people * 0.08 + people * 0.17 * num);
+                GlobalResource.globalPeople -= people;
+                temp = (int)people;
+                news[0].updown.text = "-" + temp.ToString();
                 break;
         }
     }
@@ -96,23 +101,29 @@ public class NewsEvent : MonoBehaviour
         NewsBase.SetActive(true);
         news[1].Base.SetActive(true);
         int num = level + (Count / 15 - 1);
-        Debug.Log(num);
         news[1].Info.text = GoodnewsInfo[num].info;
 
         int Type = Random.Range(0, 2);
+         int temp;
         switch (Type)
         {
             case 0: // µ∑+
-                news[1].EventIcon.sprite = People;
-                double gold = GlobalResource.globalGold;
-                gold += gold * 0.3 + gold * 0.1 * num;
-                GlobalResource.globalGold = gold;
+                news[1].EventIcon.sprite = Gold;
+                int gold = (int)GlobalResource.globalGold;
+                gold = (int)(gold * 0.3 + gold * 0.1 * num);
+                GlobalResource.globalGold += gold;
+                temp = (int)gold;
+                news[1].updown.text = "+" + temp.ToString();
+
                 break;
             case 1: // ¿Œ±∏+
                 news[1].EventIcon.sprite = People;
-                double people = GlobalResource.globalPeople;
-                people += people * 0.08 + people * 0.17 * num;
-                GlobalResource.globalPeople = people;
+                int people = (int)GlobalResource.globalPeople;
+                people = (int)(people * 0.08 + people * 0.17 * num);
+                temp = (int)people;
+                GlobalResource.globalPeople += people;
+                news[1].updown.text = "+" + temp.ToString();
+
                 break;
         }
     }
