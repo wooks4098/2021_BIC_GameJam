@@ -31,6 +31,8 @@ public class LevelObjectEvent : MonoBehaviour
     public SceneGroup Street;
     public SceneGroup City;
     int test = -1;
+    [SerializeField] GameEnd gameEnd;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.RightShift))
@@ -50,6 +52,8 @@ public class LevelObjectEvent : MonoBehaviour
         ImageOpen(City.levelGroups[OpenLevel].image);
         MaterialChange(City.levelGroups[OpenLevel].changeMaterials, 0);
         ObjectShow(City.levelGroups[OpenLevel].People);
+        if (OpenLevel == 3)
+            gameEnd.End();
     }
 
     public void StreetLevelEvent(int OpenLevel)

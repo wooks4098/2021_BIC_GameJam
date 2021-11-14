@@ -35,8 +35,8 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
 
         for (int i = 0; i < audioSourceEffects.Length; i++)
-            audioSourceEffects[i].volume = 0.3f;
-        audioSourceBgm.volume = 0.2f;
+            audioSourceEffects[i].volume = 0.5f;
+        audioSourceBgm.volume = 0.7f;
 
     }
 
