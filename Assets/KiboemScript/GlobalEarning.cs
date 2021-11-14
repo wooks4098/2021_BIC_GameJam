@@ -22,7 +22,7 @@ public class GlobalEarning : MonoBehaviour
         CountClock -= Time.deltaTime;
         if (CountClock < 0)
         {
-            GlobalResource.globalGold += System.Math.Pow(GlobalResource.globalPeople, (double)1.3f);
+            GlobalResource.globalGold += System.Math.Pow(GlobalResource.globalPeople, (double)1.33f);
             CountClock = earnRate;
         }
     }

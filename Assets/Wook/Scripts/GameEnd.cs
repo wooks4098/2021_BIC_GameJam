@@ -27,7 +27,7 @@ public class GameEnd : MonoBehaviour
         for (int i = 0; i < particleSystems.Length; i++)
         {
             if(i  == particleSystems.Length/2)
-                SoundManager.instance.SoundEffect("Fire_Short");
+                SoundManager.instance.SoundEffect("FireShort");
 
             particleSystems[i].Play();
             particleSystems[i].Play();
