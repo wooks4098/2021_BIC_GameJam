@@ -6,8 +6,8 @@ using System.Text;
 public static class GlobalResource
 {
     
-   public static double globalGold=39900000000;
-   public static double globalPeople=100000;
+   public static double globalGold=100;
+   public static double globalPeople=0;
     
 }
 public enum GlobalTextAbout{

@@ -37,6 +37,7 @@ public class SoundManager : MonoBehaviour
         for (int i = 0; i < audioSourceEffects.Length; i++)
             audioSourceEffects[i].volume = 0.5f;
         audioSourceBgm.volume = 0.7f;
+        audioSourceBgm.loop = true;
 
     }
 
